@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rifa - Fogão Industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+
+  <header class="header">
+    <div class="badge">🎟️ RIFA OFICIAL</div>
+    <h1 class="title">Fogão <span class="gold">Industrial</span></h1>
+    <p class="subtitle">Escolha seu número e concorra!</p>
+    <div class="header-prizes">
+      <span>🔥 Fogão NOVO</span>
+      <span class="divider">|</span>
+      <span>💰 R$ 500 PIX</span>
+      <span class="divider">|</span>
+      <span>🎫 R$ 15 cada</span>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section numbers-section">
+      <div class="numbers-grid" id="numbersGrid"></div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="contact-card">
+        <div class="contact-icon">📱</div>
+        <h3>Contato do Organizador</h3>
+        <a href="https://wa.me/5579998128177" class="contact-whatsapp" target="_blank">📲 (79) 99812-8177</a>
+        <p class="contact-hint">Clique para falar direto no WhatsApp</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+
+      <div class="modal-step active" id="step1">
+        <div class="modal-number" id="modalNumber">07</div>
+        <h2 class="modal-title">Seus Dados</h2>
+        <form id="step1Form">
+          <div class="input-group">
+            <label for="modalName">Nome Completo</label>
+            <input type="text" id="modalName" placeholder="Digite seu nome" required>
+          </div>
+          <div class="input-group">
+            <label for="modalPhone">Celular (WhatsApp)</label>
+            <input type="tel" id="modalPhone" placeholder="(11) 99999-9999" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Continuar →</button>
+        </form>
+      </div>
+
+      <div class="modal-step" id="step2">
+        <div class="modal-number" id="modalNumber2">07</div>
+        <h2 class="modal-title">Pagamento via PIX</h2>
+        <div class="modal-pix">
+          <p class="modal-pix-label">Chave PIX</p>
+          <div class="modal-pix-key" id="modalPixKey">79998128177</div>
+          <button class="btn btn-pix-small" id="copyPixBtn">📋 Copiar Chave</button>
+        </div>
+        <p class="modal-pix-hint">Após realizar o pagamento, clique em confirmar.</p>
+        <button class="btn btn-confirm" id="confirmBtn">✅ Confirmar Pagamento</button>
+        <button class="btn btn-back" id="backBtn">← Voltar</button>
+      </div>
+
+      <div class="modal-step" id="step3">
+        <div class="success-icon">🎉</div>
+        <h2 class="modal-title" style="color: var(--gold-light);">Pagamento Confirmado!</h2>
+        <p class="modal-sub">Número <strong id="confirmedNumber">07</strong> reservado com sucesso!</p>
+        <p class="modal-sub" style="color: var(--text-muted); font-size: 14px;">Boa sorte! 🍀</p>
+        <button class="btn btn-primary" id="closeSuccessBtn">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
