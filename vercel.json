@@ -4,7 +4,7 @@
     { "src": "api/index.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.js" }
+    { "src": "/api/(.*)", "dest": "api/index.js" }
   ],
   "env": {
     "TELEGRAM_BOT_TOKEN": "8384689249:AAG6NKH4sdJf-ZwwH1TwNXnsez_KwwD5Fmg",
