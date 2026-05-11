@@ -5,38 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rifa - Fogão Industrial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="bg-glow"></div>
   <div class="particles" id="particles"></div>
+  <div class="sparkles" id="sparkles"></div>
 
   <header class="header">
     <div class="badge">🎟️ RIFA OFICIAL</div>
     <h1 class="title">Fogão <span class="gold">Industrial</span></h1>
-    <p class="subtitle">Escolha seu número e concorra!</p>
-    <div class="header-prizes">
-      <span>🔥 Fogão NOVO</span>
-      <span class="divider">|</span>
-      <span>💰 R$ 500 PIX</span>
-      <span class="divider">|</span>
-      <span>🎫 R$ 15 cada</span>
-    </div>
+    <p class="subtitle">Escolha seu número e concorra a este prêmio incrível!</p>
   </header>
 
   <main class="main">
-    <section class="section numbers-section">
+    <section class="prize-hero">
+      <div class="prize-glow-ring"></div>
+      <div class="prize-badge-top">🔥 PRÊMIO</div>
+      <div class="prize-icon-wrap">
+        <div class="prize-icon">🔥</div>
+      </div>
+      <h2 class="prize-name">Fogão Industrial</h2>
+      <p class="prize-desc">NOVO · PRONTO PARA USO</p>
+      <div class="prize-divider">
+        <span>ou</span>
+      </div>
+      <div class="prize-value">R$ 500</div>
+      <p class="prize-subvalue">NO PIX</p>
+      <div class="prize-tag">
+        <span>🎫 Apenas R$ 15 cada número</span>
+      </div>
+      <div class="prize-stats">
+        <div class="stat">
+          <span class="stat-num">100</span>
+          <span class="stat-label">Números</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">R$ 15</span>
+          <span class="stat-label">Cada</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">🔥</span>
+          <span class="stat-label">Prêmio</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="numbers-section">
+      <div class="section-label">🔽 ESCOLHA SEU NÚMERO 🔽</div>
       <div class="numbers-grid" id="numbersGrid"></div>
     </section>
 
-    <section class="section contact-section">
+    <section class="contact-section">
       <div class="contact-card">
+        <div class="contact-glow"></div>
         <div class="contact-icon">📱</div>
-        <h3>Contato do Organizador</h3>
-        <a href="https://wa.me/5579998128177" class="contact-whatsapp" target="_blank">📲 (79) 99812-8177</a>
+        <h3>Fale com o organizador</h3>
+        <p class="contact-name"><strong>Responsável:</strong> Luiz Davi</p>
+        <a href="https://wa.me/5579998128177" class="contact-whatsapp" target="_blank">
+          <span class="whatsapp-icon">📲</span> (79) 99812-8177
+        </a>
         <p class="contact-hint">Clique para falar direto no WhatsApp</p>
       </div>
     </section>
+
+    <footer class="footer">
+      <p>© 2026 · Rifa Fogão Industrial · Boa sorte! 🍀</p>
+    </footer>
   </main>
 
   <div class="modal-overlay" id="modal">
@@ -83,7 +121,6 @@
   </div>
 
   <div class="toast" id="toast"></div>
-
   <script src="script.js"></script>
 </body>
 </html>

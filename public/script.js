@@ -4,6 +4,7 @@ let currentNumber = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   createParticles();
+  createSparkles();
   generateGrid();
   loadTakenNumbers();
   setupModal();
@@ -11,15 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function createParticles() {
   const c = document.getElementById('particles');
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 60; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
     p.style.left = Math.random() * 100 + '%';
-    p.style.animationDelay = Math.random() * 6 + 's';
-    p.style.animationDuration = (4 + Math.random() * 4) + 's';
+    p.style.animationDelay = Math.random() * 8 + 's';
+    p.style.animationDuration = (6 + Math.random() * 6) + 's';
     p.style.width = (2 + Math.random() * 3) + 'px';
     p.style.height = p.style.width;
     c.appendChild(p);
+  }
+}
+
+function createSparkles() {
+  const c = document.getElementById('sparkles');
+  for (let i = 0; i < 12; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 4 + 's';
+    s.style.animationDuration = (2 + Math.random() * 3) + 's';
+    s.style.width = (4 + Math.random() * 5) + 'px';
+    s.style.height = s.style.width;
+    c.appendChild(s);
   }
 }
 
