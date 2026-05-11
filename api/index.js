@@ -1,13 +1,12 @@
 const express = require('express');
 const axios = require('axios');
+const store = require('../store');
 
 const app = express();
 app.use(express.json());
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
-const takenNumbers = new Set();
 
 async function sendToTelegram(name, phone, number) {
   const num = String(number).padStart(2, '0');
@@ -21,7 +20,7 @@ async function sendToTelegram(name, phone, number) {
 }
 
 app.get('/api/numeros', (req, res) => {
-  res.json({ taken: [...takenNumbers] });
+  res.json({ taken: store.getAll() });
 });
 
 app.post('/api/reservar', async (req, res) => {
@@ -35,11 +34,11 @@ app.post('/api/reservar', async (req, res) => {
     return res.status(400).json({ error: 'Número inválido.' });
   }
 
-  if (takenNumbers.has(number)) {
+  if (store.has(number)) {
     return res.status(409).json({ error: 'Este número já foi reservado.' });
   }
 
-  takenNumbers.add(number);
+  store.add(number);
 
   try {
     await sendToTelegram(name, phone, number);

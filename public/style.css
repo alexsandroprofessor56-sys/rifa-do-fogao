@@ -463,6 +463,18 @@ body {
   color: var(--text-muted); font-size: 12px;
 }
 
+.developer {
+  margin-top: 12px;
+  font-size: 13px !important;
+  color: var(--text-muted) !important;
+  letter-spacing: 1px;
+}
+
+.developer strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
 /* ===== MODAL ===== */
 .modal-overlay {
   display: none;

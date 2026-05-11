@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const store = require('./store');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,22 +13,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-const takenNumbers = new Set();
-
 async function sendToTelegram(name, phone, number) {
   const num = String(number).padStart(2, '0');
   const msg = `🎟️ *Nova venda na Rifa!*\n\n👤 *Nome:* ${name}\n📱 *Telefone:* ${phone}\n🔢 *Número:* ${num}\n💰 *Valor:* R$ 15,00\n⏰ *Data:* ${new Date().toLocaleString('pt-BR')}`;
 
-  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-  await axios.post(url, {
-    chat_id: TELEGRAM_CHAT_ID,
-    text: msg,
-    parse_mode: 'Markdown'
-  }, { timeout: 15000 });
+  await axios.post(
+    `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+    { chat_id: TELEGRAM_CHAT_ID, text: msg, parse_mode: 'Markdown' },
+    { timeout: 15000 }
+  );
 }
 
 app.get('/api/numeros', (req, res) => {
-  res.json({ taken: [...takenNumbers] });
+  res.json({ taken: store.getAll() });
 });
 
 app.post('/api/reservar', async (req, res) => {
@@ -41,11 +39,11 @@ app.post('/api/reservar', async (req, res) => {
     return res.status(400).json({ error: 'Número inválido.' });
   }
 
-  if (takenNumbers.has(number)) {
+  if (store.has(number)) {
     return res.status(409).json({ error: 'Este número já foi reservado.' });
   }
 
-  takenNumbers.add(number);
+  store.add(number);
 
   try {
     await sendToTelegram(name, phone, number);
